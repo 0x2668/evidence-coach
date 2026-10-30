@@ -1,0 +1,8 @@
+# Saved source texts (abstracts, full texts, web pages, PDFs): local verification copies only, not redistributed.
+research/raw/
+# Athlete data and the coach agent's local memory: health data (GDPR Art. 9), never committed.
+athletes/
+.claude/agent-memory-local/
+# Claude Code session state
+.claude/scheduled_tasks.lock
+__pycache__/

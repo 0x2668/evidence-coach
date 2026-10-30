@@ -1,0 +1,50 @@
+[
+ {
+  "prefix": "SAF",
+  "file": "safety-screening.md",
+  "title": "Safety: screening, red flags, scope of practice, PEDs, privacy",
+  "when": "Screening (PAR-Q+, ACSM), red flags, pain during training, heat illness, hyponatremia, rhabdomyolysis, concussion, overtraining, REDs warning signs, scope of practice, steroids and SARMs, GDPR"
+ },
+ {
+  "prefix": "POP",
+  "file": "special-populations.md",
+  "title": "Physical activity dose for health and special populations",
+  "when": "Health dose (WHO), starting from sedentary, older adults, pregnancy and postpartum, adolescents, chronic conditions (diabetes, hypertension, heart disease, osteoarthritis, back pain, osteoporosis)"
+ },
+ {
+  "prefix": "STR",
+  "file": "strength.md",
+  "title": "Strength, hypertrophy, periodization, mobility",
+  "when": "Volume, load, RIR/RPE, rest, progression, deloads, periodization, autoregulation, concurrent training, bodyweight training, mobility and warm-up, knee pain programming"
+ },
+ {
+  "prefix": "END",
+  "file": "endurance.md",
+  "title": "Endurance: running, cycling, trail and ultra",
+  "when": "Zones (HR, pace, power, talk test), HRmax, critical speed and FTP, intensity distribution, beginners, running volume and injury, trail and ultra, taper, strength for endurance"
+ },
+ {
+  "prefix": "CLB",
+  "file": "climbing.md",
+  "title": "Climbing: finger training and injuries",
+  "when": "Hangboard and finger training, campus board, youth growth plates, finger and shoulder injuries, warm-up, low energy availability in climbers"
+ },
+ {
+  "prefix": "MON",
+  "file": "monitoring-recovery.md",
+  "title": "Load monitoring, recovery, sleep, injury prevention",
+  "when": "sRPE, monotony and strain, ACWR (contested), HRV, check-ins, wearable data validity, recovery methods, sleep, injury prevention, return after illness"
+ },
+ {
+  "prefix": "NUT",
+  "file": "nutrition.md",
+  "title": "Sports nutrition within a coach's scope",
+  "when": "Protein, carbohydrate, fuelling and fluids for long events and ultras, hydration, weight loss and crash-diet requests, supplements and contamination, adolescents, when to refer to a dietitian"
+ },
+ {
+  "prefix": "BEH",
+  "file": "behaviour-change.md",
+  "title": "Behaviour change, adherence, communication",
+  "when": "Intake and goal setting, motivation, habits, adherence and dropout, check-in conversation, declining unsafe requests, weight and appearance language, limits of AI coaching"
+ }
+]
