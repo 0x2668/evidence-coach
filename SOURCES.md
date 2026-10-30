@@ -1,6 +1,6 @@
 # Sources
 
-Every source cited in `.claude/skills/training-knowledge/references/`. Generated from `research/` on 2026-10-30.
+Every source cited in `.claude/skills/evidence-coach/references/`. Generated from `research/` on 2026-10-30.
 Evidence levels: consensus (position stand, consensus statement or guideline), meta-analysis (systematic review with or without meta-analysis), single study, expert opinion (narrative review, Delphi, textbook, practitioner). Practitioner sources are supplementary only.
 
 | Title | Authors | Year | Link | Evidence level | Used for |

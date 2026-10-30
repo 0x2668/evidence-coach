@@ -1,10 +1,10 @@
-# Research protocol: AI Coach knowledge base
+# Research protocol: Evidence Coach knowledge base
 
 Every research agent follows this protocol. Read it fully before starting.
 
 ## 0. Purpose and the rules that cannot be bent
 
-We are building a Claude Code subagent, `ai-coach`, that works either as an assistant to a human personal trainer or as an AI coach talking directly to athletes (beginners to advanced). Disciplines: strength and hypertrophy, running including trail and ultra, cycling, general fitness and mobility, and climbing. Further sports are added with the `/add-sport` command (`.claude/skills/add-sport/SKILL.md`), which registers a topic in `research/topics.json` with `research/tools/new_topic.py` and follows this protocol. Its knowledge base will be written only from the claims recorded under `research/`. Your job is to find the best evidence for your cluster, save the source text, record each claim in a machine-checkable form, and summarise what the coach should do in practice.
+We are building a Claude Code subagent, `evidence-coach`, that works either as an assistant to a human personal trainer or as an AI coach talking directly to athletes (beginners to advanced). Disciplines: strength and hypertrophy, running including trail and ultra, cycling, general fitness and mobility, and climbing. Further sports are added with the `/evidence-coach add sport` command (`.claude/skills/evidence-coach/add-sport.md`), which registers a topic in `research/topics.json` with `research/tools/new_topic.py` and follows this protocol. Its knowledge base will be written only from the claims recorded under `research/`. Your job is to find the best evidence for your cluster, save the source text, record each claim in a machine-checkable form, and summarise what the coach should do in practice.
 
 The user's rules:
 

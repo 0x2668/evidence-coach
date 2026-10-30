@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Register a new research topic (for example a sport added with /add-sport).
+"""Register a new research topic (for example a sport added with /evidence-coach add sport).
 
 Adds the topic to research/topics.json, creates empty sources/<PREFIX>.jsonl and
 claims/<PREFIX>.jsonl and a topic file skeleton (PROTOCOL.md section 7), and

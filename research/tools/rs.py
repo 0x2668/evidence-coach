@@ -33,10 +33,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]  # research/
 RAW = ROOT / "raw"
-UA = "Mozilla/5.0 (X11; Linux x86_64) ai-coach-research/1.0"
+UA = "Mozilla/5.0 (X11; Linux x86_64) evidence-coach-research/1.0"
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/"
-TOOL = {"tool": "ai-coach-research"}
+TOOL = {"tool": "evidence-coach-research"}
 
 
 def throttle(host, gap):

@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Run the scenarios in tests/scenarios.md against the ai-coach agent.
+"""Run the scenarios in tests/scenarios.md against the evidence-coach agent.
 
-Each scenario's prompt is sent as one message to `claude -p --agent ai-coach`.
+Each scenario's prompt is sent as one message to `claude -p --agent evidence-coach`.
 Write, Edit, web tools and the Strava and Google Calendar connectors are
 blocked so that no test reads or stores real athlete data; Bash is allowed only
 for the activity summary script. Responses go to tests/results/round-N/<ID>.md
 with mechanical checks (cited claim IDs exist, no emojis); scoring is manual.
 
-Usage: python3 tests/run_scenarios.py --round 1 [--only S01 S04] [--jobs 4]
+With --via-skill the prompt is sent as /evidence-coach <prompt> in a normal
+session instead, the route used after installing with npx skills.
+
+Usage: python3 tests/run_scenarios.py --round 1 [--only S01 S04] [--jobs 4] [--via-skill]
 """
 import argparse
 import json
@@ -19,7 +22,7 @@ from pathlib import Path
 PROJECT = Path(__file__).resolve().parents[1]
 SCENARIOS = PROJECT / "tests" / "scenarios.md"
 BLOCKED = ["Write", "Edit", "NotebookEdit", "WebSearch", "WebFetch", "mcp__claude_ai_Strava", "mcp__claude_ai_Google_Calendar"]
-ALLOWED = ["Read", "Grep", "Glob", "Bash(python3 .claude/skills/training-knowledge/scripts/activity_summary.py *)"]
+ALLOWED = ["Read", "Grep", "Glob", "Bash(python3 *activity_summary.py *)"]
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿⭐✅❌]")
 CLAIM = re.compile(r"\b[A-Z]{3}-\d{2,3}\b")
 
@@ -39,10 +42,11 @@ def known_claims():
             for l in f.read_text(encoding="utf-8").splitlines() if l.strip()}
 
 
-def run_one(sid, title, prompt, outdir, claims):
-    cmd = ["claude", "-p", prompt, "--agent", "ai-coach", "--output-format", "json", "--no-session-persistence",
+def run_one(sid, title, prompt, outdir, claims, via_skill=False):
+    route = ["-p", f"/evidence-coach {prompt}"] if via_skill else ["-p", prompt, "--agent", "evidence-coach"]
+    cmd = ["claude", *route, "--output-format", "json", "--no-session-persistence",
            "--disallowedTools", *BLOCKED, "--allowedTools", *ALLOWED]
-    proc = subprocess.run(cmd, cwd=PROJECT, capture_output=True, text=True, timeout=900)
+    proc = subprocess.run(cmd, cwd=PROJECT, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=900)
     try:
         data = json.loads(proc.stdout)
     except json.JSONDecodeError:
@@ -66,13 +70,14 @@ def main():
     ap.add_argument("--round", type=int, required=True)
     ap.add_argument("--only", nargs="+")
     ap.add_argument("--jobs", type=int, default=4)
+    ap.add_argument("--via-skill", action="store_true")
     a = ap.parse_args()
     todo = {k: v for k, v in scenarios().items() if not a.only or k in a.only}
     outdir = PROJECT / "tests" / "results" / f"round-{a.round}"
     outdir.mkdir(parents=True, exist_ok=True)
     claims = known_claims()
     with ThreadPoolExecutor(a.jobs) as pool:
-        jobs = [pool.submit(run_one, sid, t, p, outdir, claims) for sid, (t, p) in todo.items()]
+        jobs = [pool.submit(run_one, sid, t, p, outdir, claims, a.via_skill) for sid, (t, p) in todo.items()]
         for j in jobs:
             sid, cost, unknown, emojis = j.result()
             print(f"{sid}: cost {cost}; unknown IDs {unknown or 'none'}; emojis {emojis or 'none'}", flush=True)

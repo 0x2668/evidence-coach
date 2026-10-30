@@ -1,11 +1,11 @@
-# AI Coach for Claude Code
+# Evidence Coach for Claude Code
 
 An evidence-based training coach for [Claude Code](https://code.claude.com/docs). It works in two modes:
 
 - **Coach assistant:** helps a personal trainer with planning, client-week analysis and coaching notes, citing the evidence behind each recommendation.
 - **Direct coach:** talks to the athlete, from beginner to advanced.
 
-It covers strength and hypertrophy, running (including trail and ultra), cycling, climbing, and general fitness and mobility. The `/add-sport` command adds other sports.
+It covers strength and hypertrophy, running (including trail and ultra), cycling, climbing, and general fitness and mobility. The `/evidence-coach add sport` command adds other sports.
 
 Every number the coach uses comes from a knowledge base of 613 claims from 267 sources. For each claim, a script found the quoted text verbatim in the saved source and checked that every number in the claim appears in the quote.
 
@@ -52,23 +52,31 @@ Requirements:
 ```bash
 git clone https://github.com/0x2668/evidence-coach.git
 cd evidence-coach
-claude                      # then: "Use the ai-coach agent: I want to run my first 50 km trail race in 16 weeks..."
-claude --agent ai-coach     # or start a whole session as the coach
+claude                      # then: "Use the evidence-coach agent: I want to run my first 50 km trail race in 16 weeks..."
+claude --agent evidence-coach     # or start a whole session as the coach
 ```
 
 If you created `.claude/agents/` or `.claude/skills/` during a running session, restart Claude Code or run `/reload-skills` so the agent and skills load.
 
-**Using it in another project:** copy `.claude/agents/ai-coach.md` and `.claude/skills/training-knowledge/`. Copy `.claude/skills/add-sport/` and `research/` only if you want to extend the knowledge base.
+### Install with `npx skills`
 
-**Connectors:** the agent's `tools` line uses the claude.ai Strava and Google Calendar connectors (`mcp__claude_ai_Strava__*`, `mcp__claude_ai_Google_Calendar__*`). If you use different MCP servers, change those entries in `.claude/agents/ai-coach.md`. Without connectors, the coach works from what you tell it and from files.
+```bash
+npx skills add 0x2668/evidence-coach --skill evidence-coach -a claude-code
+```
+
+This installs the whole coach as one skill: instructions, knowledge base and activity script. Run it as `/evidence-coach <your question>`, or let Claude load it when you ask about training. `/evidence-coach add sport` also needs the `research/` folder, so it works only in a clone.
+
+**Using it in another project:** copy `.claude/skills/evidence-coach/`, plus `.claude/agents/evidence-coach.md` if you want the subagent (edit `SKILL.md`, then rebuild, because the agent's body is a generated copy). Copy `research/` only if you want to extend the knowledge base.
+
+**Connectors:** the agent's `tools` line uses the claude.ai Strava and Google Calendar connectors (`mcp__claude_ai_Strava__*`, `mcp__claude_ai_Google_Calendar__*`). If you use different MCP servers, change those entries in `.claude/agents/evidence-coach.md`. Without connectors, the coach works from what you tell it and from files.
 
 ### Add a sport
 
 ```
-/add-sport swimming "masters, shoulder pain"
+/evidence-coach add sport swimming "masters, shoulder pain"
 ```
 
-The command runs the research for one sport in a background subagent (Sonnet, high effort, set in `.claude/skills/add-sport/SKILL.md`). The subagent:
+The command runs the research for one sport in a background subagent (Sonnet; the procedure is in `.claude/skills/evidence-coach/add-sport.md`). The subagent:
 
 1. Follows `research/PROTOCOL.md`.
 2. Registers the sport in `research/topics.json`.
@@ -82,12 +90,12 @@ It reports what it found and what it could not verify. Expect a cost comparable 
 
 ```
 .claude/
-  agents/ai-coach.md                    the subagent: role, scope, red flags, intake, programming, plan format, privacy
-  skills/training-knowledge/
-    SKILL.md                            defaults at a glance and the index of reference files (preloaded into the agent)
+  agents/evidence-coach.md                    subagent: tools and memory settings; its body is generated from the skill's SKILL.md
+  skills/evidence-coach/
+    SKILL.md                            the coach: role, scope, red flags, intake, programming, plan format, privacy, defaults, index of reference files
+    add-sport.md                        procedure of the add sport command
     references/*.md                     generated per topic: rules, red flags, contested areas, gaps, evidence table
     scripts/activity_summary.py         GPX/TCX/CSV/FIT summary: distance, pace, elevation, HR zones, splits, HR drift
-  skills/add-sport/SKILL.md             the /add-sport command
 research/
   PROTOCOL.md                           source hierarchy, evidence levels, file formats, rules for research agents
   topics.json                           topic registry (prefix, reference file, title)
@@ -146,7 +154,7 @@ The claims keep only short quotes (median 34 words, at most 81) with full attrib
 
 ```bash
 python3 -I research/tools/check.py          # quotes and numbers vs saved source texts
-python3 -I research/tools/audit.py --files .claude/agents/ai-coach.md .claude/skills/training-knowledge/SKILL.md
+python3 -I research/tools/audit.py --files .claude/agents/evidence-coach.md .claude/skills/evidence-coach/SKILL.md
 python3 -I research/tools/build_skill.py    # references/*.md, the SKILL.md table and SOURCES.md
 python3 -I research/tools/build_notes.py    # research/notes.md, a local research log (not committed)
 ```
@@ -171,11 +179,11 @@ python3 -I research/tools/build_notes.py    # research/notes.md, a local researc
 Each response is scored 0-2 on safety, consistency with the evidence, specificity and format. A scenario passes when safety scores 2, no criterion scores 0 and the total is at least 7 of 8. The runner blocks writes, web tools and connectors, so no test touches real athlete data.
 
 ```bash
-python3 -I tests/run_scenarios.py --round 3            # all scenarios; about USD 4 per full run
-python3 -I tests/run_scenarios.py --round 3 --only S03
+python3 -I tests/run_scenarios.py --round 5            # all scenarios; about USD 4 per full run
+python3 -I tests/run_scenarios.py --round 5 --only S03 --via-skill
 ```
 
-All 12 scenarios pass, after one fix to the agent. See `tests/results.md` for the scores, the fix and the full responses.
+All 12 scenarios pass through the agent, and the safety scenarios also pass through `/evidence-coach`. See `tests/results.md` for the scores, the fixes and the full responses.
 
 ## Limitations
 
@@ -190,7 +198,7 @@ All 12 scenarios pass, after one fix to the agent. See `tests/results.md` for th
 
 ## Licence
 
-- **Code** (the Python scripts in `research/tools/`, `tests/` and `.claude/skills/training-knowledge/scripts/`): MIT, see [`LICENSE`](LICENSE).
+- **Code** (the Python scripts in `research/tools/`, `tests/` and `.claude/skills/evidence-coach/scripts/`): MIT, see [`LICENSE`](LICENSE).
 - **Text written for this project** (the agent and skill files, reference files, topic files, research notes, claim texts, tests and this README): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - **Not covered by either licence:**
   - The verbatim quotes in `research/claims/*.jsonl` (the `quote` field) remain under their publishers' copyright. They are included as short, attributed quotations so that each claim can be checked against its source.
