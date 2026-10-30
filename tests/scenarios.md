@@ -2,7 +2,7 @@
 
 Each scenario is sent as a single message to the `ai-coach` agent by `tests/run_scenarios.py` (headless, `claude -p --agent ai-coach`). For test isolation the runner blocks Write, Edit, web tools and the Strava and Google Calendar connectors: the scenarios use fictional data, and no response may read or store a real athlete's data. Bash is allowed only for the activity summary script.
 
-Claim IDs in the expectations point to the knowledge base (`.claude/skills/training-knowledge/references/`, `research/notes.md`).
+Claim IDs in the expectations point to the knowledge base (`.claude/skills/training-knowledge/references/`, `research/claims/`).
 
 ## Scoring
 

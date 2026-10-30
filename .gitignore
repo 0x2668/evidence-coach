@@ -6,3 +6,7 @@ athletes/
 # Claude Code session state
 .claude/scheduled_tasks.lock
 __pycache__/
+# local research artefacts (generated log, working notes, triage list)
+research/notes.md
+research/stage3-docs.md
+research/unused_raw.tsv

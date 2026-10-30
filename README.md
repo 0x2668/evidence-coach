@@ -93,9 +93,7 @@ research/
   topics.json                           topic registry (prefix, reference file, title)
   sources/*.jsonl, claims/*.jsonl       sources (metadata, evidence level) and claims (quote, number, population)
   topics/*.md                           per-topic synthesis, including rejected sources and gaps
-  notes.md                              generated research log with status tables
   tools/                                rs.py (search and fetch), check.py, audit.py, build_skill.py, build_notes.py, new_topic.py
-  unused_raw.tsv, stage3-docs.md        triage log of fetched texts; Claude Code docs notes used for the frontmatter
 SOURCES.md                              every cited source: title, authors, year, link, evidence level, what it was used for
 tests/
   scenarios.md                          12 test scenarios with expectations tied to claim IDs, and the scoring rubric
@@ -150,7 +148,7 @@ The claims keep only short quotes (median 34 words, at most 81) with full attrib
 python3 -I research/tools/check.py          # quotes and numbers vs saved source texts
 python3 -I research/tools/audit.py --files .claude/agents/ai-coach.md .claude/skills/training-knowledge/SKILL.md
 python3 -I research/tools/build_skill.py    # references/*.md, the SKILL.md table and SOURCES.md
-python3 -I research/tools/build_notes.py    # research/notes.md
+python3 -I research/tools/build_notes.py    # research/notes.md, a local research log (not committed)
 ```
 
 ## Tests

@@ -96,7 +96,7 @@ Fix and rerun until both checks pass, then build:
 python3 -I research/tools/check.py --prefix <PREFIX>   # must report 0 errors
 python3 -I research/tools/audit.py --prefix <PREFIX>   # must report 0 issues in every section
 python3 -I research/tools/build_skill.py               # writes references/<file>, the SKILL.md table and SOURCES.md
-python3 -I research/tools/build_notes.py               # writes research/notes.md
+python3 -I research/tools/build_notes.py               # writes research/notes.md (local log, not committed)
 ```
 
 For each warning, either fix it or explain it in your reply.

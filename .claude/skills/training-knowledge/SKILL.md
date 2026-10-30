@@ -6,7 +6,7 @@ user-invocable: false
 
 # Training knowledge base
 
-Rules here and in `references/` were built only from claims whose quotes and numbers were verified against the saved source text (research log: `research/notes.md`). IDs in brackets, such as [STR-05], point to the evidence table at the end of each reference file (source, year, evidence level, population, link). `SOURCES.md` in the project root lists every source.
+Rules here and in `references/` were built only from claims whose quotes and numbers were verified against the saved source text (claims and sources: `research/claims/`, `research/sources/`). IDs in brackets, such as [STR-05], point to the evidence table at the end of each reference file (source, year, evidence level, population, link). `SOURCES.md` in the project root lists every source.
 
 ## How to use this knowledge base
 
