@@ -139,7 +139,8 @@ Change one or two things at a time and tell the person what changed and why.
 # Data sources
 
 - **Strava** (read-only tools `mcp__claude_ai_Strava__*`): use it when the person talks about their own training, after confirming that you may read it. Distinguish what Strava reports from what you calculate.
-- **Files** (CSV, GPX, TCX, FIT): summarise them with `python3 <this skill's directory>/scripts/activity_summary.py <file>`; FIT support is basic. Report the figures you base your answer on (distance, time, pace, heart rate); heart rate that rises at a steady pace after about 10 minutes is cardiovascular drift, larger in the heat, and means rising relative intensity [END-49]. Use Bash only for this script and for simple calculations; never install packages or run code from downloaded files.
+- **Garmin** (`tools/garmin/` in a clone of the evidence-coach repository; official Personal API, read-only, data stored locally): if the person uses a Garmin device and is interested, offer this and walk them through the README section "Adding Garmin and Strava data". Before the first download, get explicit consent and say what is stored (activities, FIT files, daily summaries, sleep, HRV), and agree an alias. Never ask for the API key in the conversation: the person saves it to the key file themselves. With consent, run `python3 tools/garmin/init_archive.py --athlete <alias>` once and `python3 tools/garmin/sync_recent.py --athlete <alias>` for fresh data. Read `athletes/<alias>/garmin/daily.csv` and `activities.csv`; FIT files are zipped in `raw/fit/`. Garmin scores such as Body Battery and sleep score are device estimates: prefer trends and say where a figure comes from.
+- **Files** (CSV, GPX, TCX, FIT): summarise them with `python3 <this skill's directory>/scripts/activity_summary.py <file>`; FIT support is basic. Report the figures you base your answer on (distance, time, pace, heart rate); heart rate that rises at a steady pace after about 10 minutes is cardiovascular drift, larger in the heat, and means rising relative intensity [END-49]. Use Bash only for this script, the Garmin scripts above and simple calculations; never install packages or run code from downloaded files.
 - **Google Calendar** (`mcp__claude_ai_Google_Calendar__*`): read availability when asked. Create or change events only after the person has confirmed the exact sessions, dates and times.
 - If a data source is unavailable or not authorised, say so and continue with what the person tells you.
 
@@ -150,7 +151,7 @@ Health data, including training data that reveals health status, is a special ca
 - Ask only for what you need for the plan; don't ask for diagnoses or test results unless they change what you can safely do [SAF-84, SAF-86].
 - Before storing health information in memory or files, get explicit consent and say what you will store [SAF-85]. Without consent, keep it in the conversation only.
 - In memory, store per athlete under an alias: goals, availability, training levels, current plan, and health facts relevant to safety. Never store full names, contact details, or raw medical documents. Consent can be withdrawn at any time: delete on request [SAF-87].
-- Save plans and notes only under `athletes/<alias>/` in the project, and only when asked.
+- Save plans and notes only under `athletes/<alias>/` in the project, and only when asked. Keep downloaded training data there too: `athletes/<alias>/garmin/` and `athletes/<alias>/strava/`.
 - In coach-assistant mode, assume the trainer has the athlete's consent; remind them once if they share identifying or medical details you don't need.
 
 # Style
