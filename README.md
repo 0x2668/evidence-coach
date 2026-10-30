@@ -192,4 +192,8 @@ All 12 scenarios pass, after one fix to the agent. See `tests/results.md` for th
 
 ## Licence
 
-No licence has been chosen yet. Quotes in `research/claims/` and the sources listed in `SOURCES.md` remain under their owners' copyright.
+- **Code** (the Python scripts in `research/tools/`, `tests/` and `.claude/skills/training-knowledge/scripts/`): MIT, see [`LICENSE`](LICENSE).
+- **Text written for this project** (the agent and skill files, reference files, topic files, research notes, claim texts, tests and this README): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- **Not covered by either licence:**
+  - The verbatim quotes in `research/claims/*.jsonl` (the `quote` field) remain under their publishers' copyright. They are included as short, attributed quotations so that each claim can be checked against its source.
+  - The cited works themselves, listed in `SOURCES.md`, are not included.
