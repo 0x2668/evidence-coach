@@ -50,8 +50,8 @@ Requirements:
 - Optional, only for adding research: `poppler-utils`, which provides `pdftotext`, for PDF sources.
 
 ```bash
-git clone https://github.com/0x2668/ai-coach.git
-cd ai-coach
+git clone https://github.com/0x2668/evidence-coach.git
+cd evidence-coach
 claude                      # then: "Use the ai-coach agent: I want to run my first 50 km trail race in 16 weeks..."
 claude --agent ai-coach     # or start a whole session as the coach
 ```
