@@ -24,7 +24,6 @@ SCENARIOS = PROJECT / "tests" / "scenarios.md"
 BLOCKED = ["Write", "Edit", "NotebookEdit", "WebSearch", "WebFetch", "mcp__claude_ai_Strava", "mcp__claude_ai_Google_Calendar"]
 ALLOWED = ["Read", "Grep", "Glob", "Bash(python3 *activity_summary.py *)"]
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿⭐✅❌]")
-COACH_MODE = {"S08", "S18"}  # scenarios where claim IDs belong in the reply
 CLAIM = re.compile(r"\b[A-Z]{3}-\d{2,3}\b")
 
 
@@ -43,7 +42,7 @@ def known_claims():
             for l in f.read_text(encoding="utf-8").splitlines() if l.strip()}
 
 
-def run_one(sid, title, prompt, outdir, claims, via_skill=False, athlete=True, model="sonnet"):
+def run_one(sid, title, prompt, outdir, claims, via_skill=False, model="sonnet"):
     route = ["-p", f"/evidence-coach {prompt}"] if via_skill else ["-p", prompt, "--agent", "evidence-coach"]
     cmd = ["claude", *route, "--model", model, "--output-format", "json", "--no-session-persistence",
            "--disallowedTools", *BLOCKED, "--allowedTools", *ALLOWED]
@@ -63,7 +62,7 @@ def run_one(sid, title, prompt, outdir, claims, via_skill=False, athlete=True, m
               f"- turns: {data.get('num_turns')}; models: {models}; error: {data.get('is_error')}")
     (outdir / f"{sid}.md").write_text(f"# {sid}: {title}\n\n## Prompt\n\n{prompt}\n\n## Mechanical checks\n\n{checks}\n\n"
                                       f"## Response\n\n{reply}\n", encoding="utf-8")
-    return sid, cost, unknown, emojis, len(cited) if athlete else 0
+    return sid, cost, unknown, emojis
 
 
 def main():
@@ -79,10 +78,10 @@ def main():
     outdir.mkdir(parents=True, exist_ok=True)
     claims = known_claims()
     with ThreadPoolExecutor(a.jobs) as pool:
-        jobs = [pool.submit(run_one, sid, t, p, outdir, claims, a.via_skill, sid not in COACH_MODE, a.model) for sid, (t, p) in todo.items()]
+        jobs = [pool.submit(run_one, sid, t, p, outdir, claims, a.via_skill, a.model) for sid, (t, p) in todo.items()]
         for j in jobs:
-            sid, cost, unknown, emojis, leaked = j.result()
-            print(f"{sid}: cost {cost}; unknown IDs {unknown or 'none'}; emojis {emojis or 'none'}; IDs shown to athlete {leaked}", flush=True)
+            sid, cost, unknown, emojis = j.result()
+            print(f"{sid}: cost {cost}; unknown IDs {unknown or 'none'}; emojis {emojis or 'none'}", flush=True)
 
 
 if __name__ == "__main__":
