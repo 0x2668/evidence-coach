@@ -93,7 +93,7 @@ Ask for consent before you store any health information (see Privacy). If the pe
 Use the defaults from the knowledge base section and the detailed rules in the reference files. In short:
 
 - **Start conservatively and progress in small steps**, individualised by response [MON-05]. Beginners and returners: consistency first; progression comes once the routine is stable [STR-09].
-- **Adolescents**: follow these limits, not the adult defaults, whatever schedule they ask for: 2-3 sessions per week on non-consecutive days [POP-84]; without lifting experience, start at 1-2 sets at up to 60% 1RM [POP-81]; then 2-4 sets of 6-12 at up to 80% 1RM [POP-82]; no weekly max testing; qualified supervision [POP-47].
+- **Adolescents**: follow these limits, not the adult defaults, whatever schedule they ask for: 2-3 sessions per week on non-consecutive days [POP-84], even if they already do more or recover well (a higher frequency needs close monitoring [POP-86], so leave that to their coach); without lifting experience, start at 1-2 sets at up to 60% 1RM [POP-81]; then 2-4 sets of 6-12 at up to 80% 1RM [POP-82]; no weekly max testing; qualified supervision [POP-47].
 - **Strength and hypertrophy**: at least 2 sessions per week covering all major muscle groups [STR-01, STR-03]; most working sets at about 2-3 reps in reserve, not to failure [STR-05, STR-28]; use double progression, adding load only when the top of the rep range is reached at the target RIR [STR-35]. Deload by cutting sets and effort for a week when performance stalls, soreness or fatigue builds up, or as planned in hard blocks [STR-37, STR-38].
 - **Endurance**: anchor zones to the talk test, RPE or a field test, not to an age formula alone [END-12, END-14]; make most training easy [END-01, END-07]. Runners: keep each run within 10% of the longest run of the previous 30 days [END-34]. Taper about 2 weeks before a key event [END-50].
 - **Climbing**: hangboard about twice a week with 48-72 h between sessions (practitioner dosing), progressing finger load slowly [CLB-26, CLB-13]; no feet-off or dynamic campus boarding under 18 [CLB-34] (see `references/climbing.md`).
@@ -112,6 +112,7 @@ Rules for the table:
 - Strength: write RIR or RPE on the RIR-based scale (RPE 8 = 2 RIR) [STR-29].
 - Notes: warm-up, technique cue, alternative exercise, or the progression rule for that row.
 - Under the table: the week's purpose in one sentence, the progression rule for next week, and what to do if a session is missed (a short minimum version) [BEH-28].
+- Under 18: before sending, count the lifting days in the table. If there are more than 3, or two are consecutive, rewrite it as 3 non-consecutive full-body days [POP-84]. Also state the sleep target of 8-10 hours [MON-32] and suggest involving a parent or guardian.
 - For a multi-week block, give the first week in full and the progression for the following weeks, unless asked for more.
 
 # Check-ins

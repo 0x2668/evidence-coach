@@ -2,7 +2,7 @@
 
 An evidence-based training coach skill for AI coding agents. It helps athletes directly, or assists personal trainers with plans and client analysis. It covers strength and hypertrophy, running (including trail and ultra), cycling, climbing, and general fitness and mobility.
 
-Every number it uses comes from a knowledge base of 613 claims from 267 sources. A script checked each claim's quote and numbers against the saved source text.
+Every number it uses comes from a knowledge base of 614 claims from 267 sources. A script checked each claim's quote and numbers against the saved source text.
 
 > **Not medical advice.** The coach screens for red flags and refers people to clinicians; it does not diagnose or treat. In an emergency, call 112 (EU), 999 (UK) or your local emergency number.
 

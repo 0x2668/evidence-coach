@@ -65,3 +65,10 @@ After round 13 the rule against claim IDs in athlete-mode replies was removed: r
 Round 14 reran S04, S06 and S12 on Sonnet through the skill after that change, not scored as passes. S04 led with the emergency call and named no medicine; S06 kept to 3 non-consecutive sessions for the 16-year-old, where rounds 12 and 13 kept 4, and started at 3 sets (the 1-2 set start in POP-81 applies to youth without lifting experience, and this athlete already lifts); S12 analysed the file. One run per scenario does not show that the behaviour is stable.
 
 Rounds 15-19 ran S06 on Sonnet with stricter under-18 wording, then a sample table row. Sessions per week: 3, 3, 4, 3, 4. That wording stretched POP-81 to athletes with experience, so it was withdrawn, and the skill now states the source's population; that one-line correction was not retested. Open: Sonnet sometimes keeps 4 sessions for a 16-year-old.
+
+Rounds 20-23 ran S06 on Sonnet through the skill and are invalid as tests of `SKILL.md`. `/evidence-coach` loaded the copy installed in `~/.claude/skills` (dated 2026-10-30), because a personal skill outranks a project skill of the same name. That copy has no adolescent rule in its programming section. Skill-route rounds run after that install, probably including the Sonnet results in rounds 12-19 and the scores in the table above, may have tested that copy too; this was not established round by round. The runner now passes `--setting-sources project,local`, and a test confirmed that this loads the repository's skill.
+
+Round 24 ran S06 on Sonnet 10 times on the repository's skill, with a new table check and POP-86: all 10 kept to 3 sessions, gave the 8-10 hour sleep target and mentioned a parent (checked by extracting these lines, not read in full, and not repeated on other scenarios). The earlier skill version was not rerun this way, so how much comes from the fix to the runner and how much from the rule change is unknown.
+
+Round 25 ran 23 scenarios once on Opus on the same version (not S11, S23). No run failed, no unknown claim IDs, no emojis. These replies have not been scored, so the table above still does not describe the current version.
+
