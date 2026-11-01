@@ -1,11 +1,11 @@
 # Add a sport to the Evidence Coach knowledge base
 
-The request is given in your prompt. The first word or quoted phrase of the request is the sport; anything after it is the user's focus (level, age group, goal, question). If the request is empty, stop and reply only: `Usage: add sport <sport> [focus]`. Run every command from the project root.
+The request is given in your prompt. The first word or quoted phrase of the request is the sport; anything after it is the user's focus (level, age group, goal, question). If the request is empty, stop and reply only: `Usage: add sport <sport> [focus]`. Run every command from this skill's directory, the one that holds this file. Paths below are relative to it.
 
 ## 1. Read first
 
 - `research/PROTOCOL.md`, in full. Its source hierarchy, tools, JSONL formats, evidence levels, contested-area rules and topic-file structure apply unchanged. Where this file differs (budget, files you may edit), this file wins.
-- `skills/evidence-coach/SKILL.md`, and the existing reference file closest to the sport.
+- `SKILL.md`, and the existing reference file closest to the sport.
 
 ## 2. Check that the sport is new, then register it
 
@@ -82,7 +82,6 @@ Fix and rerun until both checks pass, then build:
 python3 -I research/tools/check.py --prefix <PREFIX>   # must report 0 errors
 python3 -I research/tools/audit.py --prefix <PREFIX>   # must report 0 issues in every section
 python3 -I research/tools/build_skill.py               # writes references/<file>, the SKILL.md table and SOURCES.md
-python3 -I research/tools/build_notes.py               # writes research/notes.md (local log, not committed)
 ```
 
 For each warning, either fix it or explain it in your reply.
@@ -91,10 +90,10 @@ For each warning, either fix it or explain it in your reply.
 
 Make exactly these edits:
 
-- `skills/evidence-coach/SKILL.md`: add the sport to the list of disciplines in the `description`. If the sport has contested areas, also add one line naming them under "Contested areas" (subjects only, no numbers).
-- `.claude/agents/evidence-coach.md`: add the sport to the list of disciplines in the `description`.
+- `SKILL.md`: add the sport to the list of disciplines in the `description`. If the sport has contested areas, also add one line naming them under "Contested areas" (subjects only, no numbers).
+- If `../../.claude/agents/evidence-coach.md` exists (in a clone of the repository): add the sport to the list of disciplines in the `description`.
 
-Then run `python3 -I research/tools/build_skill.py` again, which copies the skill into the agent file, and `python3 -I research/tools/audit.py --files .claude/agents/evidence-coach.md skills/evidence-coach/SKILL.md` and confirm it reports 0 issues.
+Then run `python3 -I research/tools/build_skill.py` again, which copies the skill into the agent file, and `python3 -I research/tools/audit.py --files SKILL.md` and confirm it reports 0 issues.
 
 ## Limits
 
@@ -116,4 +115,4 @@ Write at most 300 words, in the language of the request:
 - 3-6 key practical rules;
 - contested areas and gaps;
 - the results of check.py and audit.py;
-- anything the user must decide.
+- anything the user must decide, including that reinstalling or updating the skill may remove the new sport, so they may want to back up this directory.

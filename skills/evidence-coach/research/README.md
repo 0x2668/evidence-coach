@@ -1,6 +1,6 @@
 # Knowledge base and development
 
-How the Evidence Coach knowledge base was built and checked, and how to work on the repository. Run the commands from the repository root.
+How the Evidence Coach knowledge base was built and checked, and how to work on the repository. Run the commands from `skills/evidence-coach/`.
 
 ## Repository layout
 
@@ -11,16 +11,16 @@ skills/evidence-coach/
   add-sport.md                        procedure of the add sport command
   references/*.md                     generated per topic: rules, red flags, contested areas, gaps, evidence table
   scripts/activity_summary.py         GPX/TCX/CSV/FIT summary: distance, pace, elevation, HR zones, splits, HR drift
-research/
-  PROTOCOL.md                           source hierarchy, evidence levels, file formats, rules for research agents
-  topics.json                           topic registry (prefix, reference file, title)
-  sources/*.jsonl, claims/*.jsonl       sources (metadata, evidence level) and claims (quote, number, population)
-  topics/*.md                           per-topic synthesis, including rejected sources and gaps
-  tools/                                rs.py (search and fetch), check.py, audit.py, build_skill.py, build_notes.py, new_topic.py
-tools/garmin/                           init_archive.py and sync_recent.py: download Garmin Connect data to athletes/<alias>/garmin/
-SOURCES.md                              every cited source: title, authors, year, link, evidence level, what it was used for
+  research/
+    PROTOCOL.md                           source hierarchy, evidence levels, file formats, rules for research agents
+    topics.json                           topic registry (prefix, reference file, title)
+    sources/*.jsonl, claims/*.jsonl       sources (metadata, evidence level) and claims (quote, number, population)
+    topics/*.md                           per-topic synthesis, including rejected sources and gaps
+    tools/                                rs.py (search and fetch), check.py, audit.py, build_skill.py, build_notes.py, new_topic.py
+  scripts/garmin/                     init_archive.py and sync_recent.py: download Garmin Connect data to ~/.evidence-coach/athletes/<alias>/garmin/
+  SOURCES.md                            every cited source: title, authors, year, link, evidence level, what it was used for
 tests/
-  scenarios.md                          12 test scenarios with expectations tied to claim IDs, and the scoring rubric
+  scenarios.md                          25 test scenarios in 13 languages with expectations tied to claim IDs, and the scoring rubric
   run_scenarios.py                      runs the scenarios headless against the agent
   results.md, results/round-N/          scores and full responses
 ```
@@ -70,7 +70,7 @@ The claims keep only short quotes (median 34 words, at most 81) with full attrib
 
 ```bash
 python3 -I research/tools/check.py          # quotes and numbers vs saved source texts
-python3 -I research/tools/audit.py --files .claude/agents/evidence-coach.md skills/evidence-coach/SKILL.md
+python3 -I research/tools/audit.py --files ../../.claude/agents/evidence-coach.md SKILL.md
 python3 -I research/tools/build_skill.py    # references/*.md, the SKILL.md table and SOURCES.md
 python3 -I research/tools/build_notes.py    # research/notes.md, a local research log (not committed)
 ```

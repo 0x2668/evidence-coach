@@ -93,7 +93,7 @@ def load_jsonl(path, errors):
     return rows
 
 
-def check_sources(errors):
+def check_sources(errors, prefix=None):
     sources = {}
     for f in sorted((ROOT / "sources").glob("*.jsonl")):
         for s in load_jsonl(f, errors):
@@ -113,7 +113,8 @@ def check_sources(errors):
             if not isinstance(s.get("raw"), list):
                 errors.append(f"{where}: raw must be a list of file names")
             for r in raws:
-                if not (ROOT / "raw" / r).exists():
+                # An installed skill has no raw texts of the other topics.
+                if (not prefix or f.stem == prefix) and not (ROOT / "raw" / r).exists():
                     errors.append(f"{where}: raw file raw/{r} does not exist")
             key = s.get("key")
             if key in sources:
@@ -176,7 +177,7 @@ def check_claim(c, prefix, sources, seen, errors, warnings):
 def run(prefix=None):
     """Check everything (or one cluster's claims). Returns a dict of results."""
     errors, warnings = [], []
-    sources = check_sources(errors)
+    sources = check_sources(errors, prefix)
     files = [ROOT / "claims" / f"{prefix}.jsonl"] if prefix else sorted((ROOT / "claims").glob("*.jsonl"))
     status, stats, manual, seen = {}, {}, [], set()
     for f in files:

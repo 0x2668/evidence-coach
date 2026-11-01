@@ -43,7 +43,7 @@ I want to run my first 50 km trail race in 16 weeks. Build me a plan.
 - **Stays in scope:** no diagnosis, treatment, restrictive diets or medication advice, and no dosing for steroids or SARMs.
 - **Builds plans:** tables with sets and reps or time and zone, RPE/RIR, progression and check-ins.
 - **Shows the evidence:** contested areas are labelled, and where the evidence gives no figure, the coach says so.
-- **Reads training data:** GPX, TCX, CSV and FIT files; Strava and Google Calendar if connected; Garmin Connect through scripts in a clone ([setup](tools/garmin/README.md)).
+- **Reads training data:** GPX, TCX, CSV and FIT files; Strava and Google Calendar if connected; Garmin Connect through included scripts ([setup](skills/evidence-coach/scripts/garmin/README.md)).
 - **Protects health data:** it stores nothing without explicit consent.
 
 ## Limitations
@@ -54,9 +54,9 @@ I want to run my first 50 km trail race in 16 weeks. Build me a plan.
 
 ## Evidence and new sports
 
-- [`SOURCES.md`](SOURCES.md) lists every source. [`research/PROTOCOL.md`](research/PROTOCOL.md) describes the method, and [`research/README.md`](research/README.md) how the knowledge base was built. Source texts are not included, because they belong to their publishers.
-- To add a sport, clone this repository and ask the agent to `add sport swimming`. It researches and verifies the evidence, then adds a reference file.
+- [`SOURCES.md`](skills/evidence-coach/SOURCES.md) lists every source. [the protocol](skills/evidence-coach/research/PROTOCOL.md) describes the method, and [this page](skills/evidence-coach/research/README.md) how the knowledge base was built. Source texts are not included, because they belong to their publishers.
+- To add a sport, ask the agent to `add sport swimming`. It researches and verifies the evidence, then adds a reference file to the skill. Reinstalling or updating the skill may remove it, so back up the skill's directory.
 
 ## Licence
 
-Code is [MIT](LICENSE). Project text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Quotes in `research/claims/` remain under their publishers' copyright.
+Code is [MIT](LICENSE). Project text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Quotes in `skills/evidence-coach/research/claims/` remain under their publishers' copyright.

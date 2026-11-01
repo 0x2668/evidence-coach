@@ -26,7 +26,7 @@ Do not use supplement or vendor marketing pages, forums, social media, AI-genera
 
 ## 2. Tools
 
-Run from the project root. All commands use `python3 -I`.
+Run from the skill's directory. All commands use `python3 -I`.
 
 ```bash
 T=research/tools/rs.py

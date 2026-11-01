@@ -18,13 +18,12 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]  # research/
-PROJECT = ROOT.parent
 _spec = importlib.util.spec_from_file_location("check", Path(__file__).with_name("check.py"))
 check = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(check)
-SKILL = PROJECT / "skills" / "evidence-coach" / "SKILL.md"
+SKILL = ROOT.parent / "SKILL.md"
 REFS = SKILL.parent / "references"
-AGENT = PROJECT / ".claude" / "agents" / "evidence-coach.md"
+AGENT = ROOT.parents[2] / ".claude" / "agents" / "evidence-coach.md"  # only in a clone
 FILES = {t["prefix"]: (t["file"], t["title"]) for t in check.TOPICS}
 TABLE_START, TABLE_END = "<!-- reference table: generated from research/topics.json -->", "<!-- end of reference table -->"
 KEEP = {"practical rules": "Practical rules", "red flags": "Red flags and referral triggers",
@@ -72,11 +71,13 @@ def write_skill_table():
 
 
 def write_agent():
+    if not AGENT.exists():
+        return
     _, front, _ = AGENT.read_text(encoding="utf-8").split("---\n", 2)
     _, _, body = SKILL.read_text(encoding="utf-8").split("---\n", 2)
     body = body[body.index("# Role"):]
-    skill_dir = "skills/" + SKILL.parent.name
-    body = body.replace("<this skill's directory>", skill_dir).replace("this skill's `references/` directory", f"`{skill_dir}/references/`")
+    skill_dir = "skills/evidence-coach"
+    body = body.replace("<this skill's directory>", skill_dir).replace("this skill's `references/` directory", f"`{skill_dir}/references/`").replace("this skill's directory", f"`{skill_dir}/`")
     note = f"<!-- Generated from {skill_dir}/SKILL.md by research/tools/build_skill.py; edit that file. -->"
     AGENT.write_text("---\n" + front + "---\n\n" + note + "\n\n" + body, encoding="utf-8")
     print("wrote agents/evidence-coach.md from SKILL.md")
@@ -123,7 +124,7 @@ def main():
         print(f"wrote {fname}: {len(ids)} cited claims" + (f"; unknown IDs {missing}" if missing else ""))
 
     out = ["# Sources", "",
-           f"Every source cited in `skills/evidence-coach/references/`. Generated from `research/` on {date.today().isoformat()}.",
+           f"Every source cited in `references/`. Generated from `research/` on {date.today().isoformat()}.",
            "Evidence levels: consensus (position stand, consensus statement or guideline), meta-analysis (systematic review "
            "with or without meta-analysis), single study, expert opinion (narrative review, Delphi, textbook, practitioner). "
            "Practitioner sources are supplementary only.", "",
@@ -135,7 +136,7 @@ def main():
             level += f"; superseded by {s['superseded']}"
         uses = "; ".join(sorted(used_for[key]))
         out.append(f"| {cell(s['title'])} | {cell(s['authors'])} | {s['year']} | {link(s)} | {level} | {cell(uses)} |")
-    (PROJECT / "SOURCES.md").write_text("\n".join(out) + "\n", encoding="utf-8")
+    (SKILL.parent / "SOURCES.md").write_text("\n".join(out) + "\n", encoding="utf-8")
     print(f"wrote SOURCES.md: {len(used_for)} sources")
     write_skill_table()
     write_agent()

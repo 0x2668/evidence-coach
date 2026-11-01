@@ -1,8 +1,9 @@
 """Shared helpers for the Garmin Connect Personal API scripts.
 
-The API key is read from ~/.config/garmin/api_key (outside the repository)
+The API key is read from ~/.config/garmin/api_key
 or from the GARMIN_API_KEY_FILE environment variable. Data is written to
-athletes/<alias>/garmin/, which is git-ignored (health data, GDPR Art. 9).
+~/.evidence-coach/athletes/<alias>/garmin/, outside any project, so that this
+health data (GDPR Art. 9) cannot be committed by accident.
 """
 import csv
 import datetime as dt
@@ -17,7 +18,7 @@ from pathlib import Path
 
 BASE = "https://personal.connectapi.garmin.com"
 KEY_FILE = Path(os.environ.get("GARMIN_API_KEY_FILE", "~/.config/garmin/api_key")).expanduser()
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path.home() / ".evidence-coach"
 DATA = None  # set by use_athlete()
 PAUSE = 0.5  # seconds between requests
 CHUNK_DAYS = 28  # largest range accepted by every daily endpoint we use

@@ -38,7 +38,7 @@ def scenarios():
 
 
 def known_claims():
-    return {json.loads(l)["id"] for f in (PROJECT / "research" / "claims").glob("*.jsonl")
+    return {json.loads(l)["id"] for f in (PROJECT / "skills" / "evidence-coach" / "research" / "claims").glob("*.jsonl")
             for l in f.read_text(encoding="utf-8").splitlines() if l.strip()}
 
 

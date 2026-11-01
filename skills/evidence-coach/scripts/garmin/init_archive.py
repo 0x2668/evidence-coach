@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """One-off: download the whole Garmin Connect archive (activities with FIT files,
-daily summaries, sleep, HRV) into athletes/<alias>/garmin/.
+daily summaries, sleep, HRV) into ~/.evidence-coach/athletes/<alias>/garmin/.
 
 Safe to re-run: activity FIT files that already exist are skipped, daily files
 are overwritten with the same data. On an API error it stops (no retry loop);
 just run it again.
 
-  python3 tools/garmin/init_archive.py --athlete <alias> [--since 2024-01-01]
+  python3 scripts/garmin/init_archive.py --athlete <alias> [--since 2024-01-01]
 """
 import argparse
 import datetime as dt
@@ -16,7 +16,7 @@ import garmin_api as g
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--athlete", required=True, help="alias: data goes to athletes/<alias>/garmin/")
+    ap.add_argument("--athlete", required=True, help="alias: data goes to ~/.evidence-coach/athletes/<alias>/garmin/")
     ap.add_argument("--since", default="2024-01-01", type=dt.date.fromisoformat,
                     help="first day to request for daily data (empty days are skipped)")
     args = ap.parse_args()

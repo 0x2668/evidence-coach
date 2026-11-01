@@ -1,5 +1,5 @@
 # Saved source texts (abstracts, full texts, web pages, PDFs): local verification copies only, not redistributed.
-research/raw/
+skills/evidence-coach/research/raw/
 # Athlete data and the coach agent's local memory: health data (GDPR Art. 9), never committed.
 athletes/
 .claude/agent-memory-local/
@@ -7,6 +7,6 @@ athletes/
 .claude/scheduled_tasks.lock
 __pycache__/
 # local research artefacts (generated log, working notes, triage list)
-research/notes.md
-research/stage3-docs.md
-research/unused_raw.tsv
+skills/evidence-coach/research/notes.md
+skills/evidence-coach/research/stage3-docs.md
+skills/evidence-coach/research/unused_raw.tsv
