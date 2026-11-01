@@ -75,7 +75,7 @@ def write_agent():
         return
     _, front, _ = AGENT.read_text(encoding="utf-8").split("---\n", 2)
     _, _, body = SKILL.read_text(encoding="utf-8").split("---\n", 2)
-    body = body[body.index("# Role"):]
+    body = body[body.index("# Output rule"):]
     skill_dir = "skills/evidence-coach"
     body = body.replace("<this skill's directory>", skill_dir).replace("this skill's `references/` directory", f"`{skill_dir}/references/`").replace("this skill's directory", f"`{skill_dir}/`")
     note = f"<!-- Generated from {skill_dir}/SKILL.md by research/tools/build_skill.py; edit that file. -->"
