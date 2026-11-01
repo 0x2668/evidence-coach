@@ -62,4 +62,6 @@ Rounds 12 and 13 ran on Sonnet through the skill and are not scored as passes. C
 
 After round 13 the rule against claim IDs in athlete-mode replies was removed: references to the research may stay for athletes and coaches alike. Showing them is no longer a defect.
 
-Round 14 reran S04, S06 and S12 on Sonnet through the skill after that change, not scored as passes. S04 led with the emergency call and named no medicine; S06 kept to 3 non-consecutive sessions for the 16-year-old, where rounds 12 and 13 kept 4, but started at 3 sets rather than the 1-2 sets of the rule; S12 analysed the file. One run per scenario does not show that the behaviour is stable.
+Round 14 reran S04, S06 and S12 on Sonnet through the skill after that change, not scored as passes. S04 led with the emergency call and named no medicine; S06 kept to 3 non-consecutive sessions for the 16-year-old, where rounds 12 and 13 kept 4, and started at 3 sets (the 1-2 set start in POP-81 applies to youth without lifting experience, and this athlete already lifts); S12 analysed the file. One run per scenario does not show that the behaviour is stable.
+
+Rounds 15-19 ran S06 on Sonnet with stricter under-18 wording, then a sample table row. Sessions per week: 3, 3, 4, 3, 4. That wording stretched POP-81 to athletes with experience, so it was withdrawn, and the skill now states the source's population; that one-line correction was not retested. Open: Sonnet sometimes keeps 4 sessions for a 16-year-old.
