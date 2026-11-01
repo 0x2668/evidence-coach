@@ -1,11 +1,11 @@
 # Add a sport to the Evidence Coach knowledge base
 
-The request is given in your prompt. The first word or quoted phrase of the request is the sport; anything after it is the user's focus (level, age group, goal, question). If the request is empty, stop and reply only: `Usage: /evidence-coach add sport <sport> [focus]`. Run every command from the project root.
+The request is given in your prompt. The first word or quoted phrase of the request is the sport; anything after it is the user's focus (level, age group, goal, question). If the request is empty, stop and reply only: `Usage: add sport <sport> [focus]`. Run every command from the project root.
 
 ## 1. Read first
 
 - `research/PROTOCOL.md`, in full. Its source hierarchy, tools, JSONL formats, evidence levels, contested-area rules and topic-file structure apply unchanged. Where this file differs (budget, files you may edit), this file wins.
-- `.claude/skills/evidence-coach/SKILL.md`, and the existing reference file closest to the sport.
+- `skills/evidence-coach/SKILL.md`, and the existing reference file closest to the sport.
 
 ## 2. Check that the sport is new, then register it
 
@@ -91,10 +91,10 @@ For each warning, either fix it or explain it in your reply.
 
 Make exactly these edits:
 
-- `.claude/skills/evidence-coach/SKILL.md`: add the sport to the list of disciplines in the `description`. If the sport has contested areas, also add one line naming them under "Contested areas" (subjects only, no numbers).
+- `skills/evidence-coach/SKILL.md`: add the sport to the list of disciplines in the `description`. If the sport has contested areas, also add one line naming them under "Contested areas" (subjects only, no numbers).
 - `.claude/agents/evidence-coach.md`: add the sport to the list of disciplines in the `description`.
 
-Then run `python3 -I research/tools/build_skill.py` again, which copies the skill into the agent file, and `python3 -I research/tools/audit.py --files .claude/agents/evidence-coach.md .claude/skills/evidence-coach/SKILL.md` and confirm it reports 0 issues.
+Then run `python3 -I research/tools/build_skill.py` again, which copies the skill into the agent file, and `python3 -I research/tools/audit.py --files .claude/agents/evidence-coach.md skills/evidence-coach/SKILL.md` and confirm it reports 0 issues.
 
 ## Limits
 

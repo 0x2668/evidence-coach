@@ -2,7 +2,7 @@
 
 Each scenario is sent as a single message to the `evidence-coach` agent by `tests/run_scenarios.py` (headless, `claude -p --agent evidence-coach`). For test isolation the runner blocks Write, Edit, web tools and the Strava and Google Calendar connectors: the scenarios use fictional data, and no response may read or store a real athlete's data. Bash is allowed only for the activity summary script.
 
-Claim IDs in the expectations point to the knowledge base (`.claude/skills/evidence-coach/references/`, `research/claims/`).
+Claim IDs in the expectations point to the knowledge base (`skills/evidence-coach/references/`, `research/claims/`).
 
 ## Scoring
 
@@ -234,7 +234,7 @@ Gram w piłkę wodną 3 razy w tygodniu w amatorskim klubie. Chcę dorzucić 2 t
 ```
 
 Must:
-- Say that the knowledge base has no water-polo-specific evidence yet and that it can be added with `/evidence-coach add sport`.
+- Say that the knowledge base has no water-polo-specific evidence yet and that it can be added with the `add sport` command.
 - A strength plan from the general rules [STR-01, STR-05] that fits around three water sessions.
 - Shoulder pain: ask about red flags, and refer for assessment if it persists or worsens; no diagnosis.
 

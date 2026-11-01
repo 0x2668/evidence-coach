@@ -5,13 +5,12 @@ How the Evidence Coach knowledge base was built and checked, and how to work on 
 ## Repository layout
 
 ```
-.claude/
-  agents/evidence-coach.md              subagent: tools and memory settings; its body is generated from the skill's SKILL.md
-  skills/evidence-coach/
-    SKILL.md                            the coach: role, scope, red flags, intake, programming, plan format, privacy, defaults, index of reference files
-    add-sport.md                        procedure of the add sport command
-    references/*.md                     generated per topic: rules, red flags, contested areas, gaps, evidence table
-    scripts/activity_summary.py         GPX/TCX/CSV/FIT summary: distance, pace, elevation, HR zones, splits, HR drift
+.claude/agents/evidence-coach.md        subagent: tools and memory settings; its body is generated from the skill's SKILL.md
+skills/evidence-coach/
+  SKILL.md                            the coach: role, scope, red flags, intake, programming, plan format, privacy, defaults, index of reference files
+  add-sport.md                        procedure of the add sport command
+  references/*.md                     generated per topic: rules, red flags, contested areas, gaps, evidence table
+  scripts/activity_summary.py         GPX/TCX/CSV/FIT summary: distance, pace, elevation, HR zones, splits, HR drift
 research/
   PROTOCOL.md                           source hierarchy, evidence levels, file formats, rules for research agents
   topics.json                           topic registry (prefix, reference file, title)
@@ -71,7 +70,7 @@ The claims keep only short quotes (median 34 words, at most 81) with full attrib
 
 ```bash
 python3 -I research/tools/check.py          # quotes and numbers vs saved source texts
-python3 -I research/tools/audit.py --files .claude/agents/evidence-coach.md .claude/skills/evidence-coach/SKILL.md
+python3 -I research/tools/audit.py --files .claude/agents/evidence-coach.md skills/evidence-coach/SKILL.md
 python3 -I research/tools/build_skill.py    # references/*.md, the SKILL.md table and SOURCES.md
 python3 -I research/tools/build_notes.py    # research/notes.md, a local research log (not committed)
 ```

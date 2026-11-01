@@ -22,7 +22,7 @@ PROJECT = ROOT.parent
 _spec = importlib.util.spec_from_file_location("check", Path(__file__).with_name("check.py"))
 check = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(check)
-SKILL = PROJECT / ".claude" / "skills" / "evidence-coach" / "SKILL.md"
+SKILL = PROJECT / "skills" / "evidence-coach" / "SKILL.md"
 REFS = SKILL.parent / "references"
 AGENT = PROJECT / ".claude" / "agents" / "evidence-coach.md"
 FILES = {t["prefix"]: (t["file"], t["title"]) for t in check.TOPICS}
@@ -75,7 +75,7 @@ def write_agent():
     _, front, _ = AGENT.read_text(encoding="utf-8").split("---\n", 2)
     _, _, body = SKILL.read_text(encoding="utf-8").split("---\n", 2)
     body = body[body.index("# Role"):]
-    skill_dir = ".claude/skills/" + SKILL.parent.name
+    skill_dir = "skills/" + SKILL.parent.name
     body = body.replace("<this skill's directory>", skill_dir).replace("this skill's `references/` directory", f"`{skill_dir}/references/`")
     note = f"<!-- Generated from {skill_dir}/SKILL.md by research/tools/build_skill.py; edit that file. -->"
     AGENT.write_text("---\n" + front + "---\n\n" + note + "\n\n" + body, encoding="utf-8")
@@ -123,7 +123,7 @@ def main():
         print(f"wrote {fname}: {len(ids)} cited claims" + (f"; unknown IDs {missing}" if missing else ""))
 
     out = ["# Sources", "",
-           f"Every source cited in `.claude/skills/evidence-coach/references/`. Generated from `research/` on {date.today().isoformat()}.",
+           f"Every source cited in `skills/evidence-coach/references/`. Generated from `research/` on {date.today().isoformat()}.",
            "Evidence levels: consensus (position stand, consensus statement or guideline), meta-analysis (systematic review "
            "with or without meta-analysis), single study, expert opinion (narrative review, Delphi, textbook, practitioner). "
            "Practitioner sources are supplementary only.", "",
