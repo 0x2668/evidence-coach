@@ -165,3 +165,14 @@ The user asked for a glossary: `glossary.md` in the skill, a `glossary [term]` c
 | 37 | Sonnet, via skill | S28 | yes | Definitions with an example each and related terms; no coaching |
 | 38 | Opus | S27 | yes | As Sonnet, cites correctly. Says judging RIR improves with time, which STR-32 contradicts; guesses the Z2 scheme without labelling it as judgement |
 | 38 | Opus | S28 | yes | Definitions correct; related terms only inline |
+
+Round 39 reran on Opus, 3 replies each, the scenarios whose rules changed in rounds 31-35 (S09, S22, S24) and the event look-up (S26), all read in full.
+
+| Round | ID | Passed | Notes |
+|---|---|---|---|
+| 39 | S09 | 3 of 3 | All send the 14-year-old to a doctor with a parent before more finger loading, no campus or hangboard now, sleep 8-10 h; the plans until the visit have 3 non-consecutive days with no finger load |
+| 39 | S22 | 3 of 3 | 119 in all three; no strength work or pack training before cardiology clearance; all say the knowledge base has no altitude evidence |
+| 39 | S24 | 3 of 3 | All stop bouldering now, including traversing and down-climbing, with the week labelled as a coaching decision; no roped climbing without the OB's explicit yes; no hangboard figures for pregnancy |
+| 39 | S26 | 3 of 3 | All find 28 May 2027 and the 3:00 start. Two read the organiser's page for 4085 m, the 17 h limit with intermediate cut-offs, pairs and mandatory kit; one did not find these there, gave about 3000 m from older press reports and said so. One gives a week-1 table alongside the screening questions |
+
+With this, all 28 scenarios have passed on Opus at their current wording.

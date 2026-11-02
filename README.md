@@ -49,7 +49,7 @@ I want to run my first 50 km trail race in 16 weeks. Build me a plan.
 
 ## Limitations
 
-- **Use a strong model.** On Claude Opus, the 25 original test scenarios and the two glossary scenarios (S27, S28) pass; S26 (event look-up) has run only on Sonnet so far. On Claude Sonnet the coach ignored some rules: it gave a 16-year-old an adult programme. Other models are untested.
+- **Use a strong model.** All 28 test scenarios pass on Claude Opus. On Claude Sonnet the coach ignored some rules: it gave a 16-year-old an adult programme. Other models are untested.
 - Automated tests ran only in Claude Code, and only on single messages. The other tools are supported through the skills CLI but untested. See [`tests/results.md`](tests/results.md).
 - Many studies are in young, trained men, and some areas have evidence gaps, listed in the [reference files](skills/evidence-coach/references/).
 - The coach can make mistakes. A qualified professional should review plans for people with health conditions.
