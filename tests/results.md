@@ -155,3 +155,13 @@ The user then asked for a categorical ban on bouldering this late in pregnancy. 
 |---|---|---|---|
 | 34 | S24 | 2 of 3 | All stop bouldering, but one calls it "my coaching line, not a fixed rule" |
 | 35 | S24 | 3 of 3 | After wording it as a firm instruction: all three say stop now, including traversing. One adds that even the OB's yes would not change the advice; one still lists "is bouldering fine?" among the questions for the OB |
+
+The user asked for a glossary: `glossary.md` in the skill, a `glossary [term]` command, a rule that athlete-mode replies explain each abbreviation the first time it appears, and a line under plan tables pointing to the command. S27 (terms in a friend's plan) and S28 (`glossary FTP HRV`) test it; S28 expected Polish at first, but the prompt has no words to show a language, so it now expects English.
+
+| Round | Model | ID | Passed | Notes |
+|---|---|---|---|---|
+| 36 | Sonnet | S27 | yes | RIR, deload and both meanings of Z2 explained in Polish, talk test, points to `glossary`. Cites STR-39 (the week-off trial) for "every 5-6 weeks", which is STR-38 |
+| 36 | Sonnet | S28 | yes | Glossary definitions, RMSSD as the related term |
+| 37 | Sonnet, via skill | S28 | yes | Definitions with an example each and related terms; no coaching |
+| 38 | Opus | S27 | yes | As Sonnet, cites correctly. Says judging RIR improves with time, which STR-32 contradicts; guesses the Z2 scheme without labelling it as judgement |
+| 38 | Opus | S28 | yes | Definitions correct; related terms only inline |

@@ -43,12 +43,13 @@ I want to run my first 50 km trail race in 16 weeks. Build me a plan.
 - **Stays in scope:** no diagnosis, treatment, restrictive diets or medication advice, and no dosing for steroids or SARMs.
 - **Builds plans:** tables with sets and reps or time and zone, RPE/RIR, progression and check-ins.
 - **Shows the evidence:** contested areas are labelled, and where the evidence gives no figure, the coach says so.
+- **Explains its terms:** abbreviations such as RIR or FTP are explained the first time they appear; ask `glossary` for the full list or `glossary RIR` for one term.
 - **Reads training data:** GPX, TCX, CSV and FIT files; Strava and Google Calendar if connected; Garmin Connect through included scripts ([setup](skills/evidence-coach/scripts/garmin/README.md)).
 - **Protects health data:** it stores nothing without explicit consent.
 
 ## Limitations
 
-- **Use a strong model.** All 25 test scenarios pass on Claude Opus. On Claude Sonnet the coach ignored some rules: it gave a 16-year-old an adult programme. Other models are untested.
+- **Use a strong model.** On Claude Opus, the 25 original test scenarios and the two glossary scenarios (S27, S28) pass; S26 (event look-up) has run only on Sonnet so far. On Claude Sonnet the coach ignored some rules: it gave a 16-year-old an adult programme. Other models are untested.
 - Automated tests ran only in Claude Code, and only on single messages. The other tools are supported through the skills CLI but untested. See [`tests/results.md`](tests/results.md).
 - Many studies are in young, trained men, and some areas have evidence gaps, listed in the [reference files](skills/evidence-coach/references/).
 - The coach can make mistakes. A qualified professional should review plans for people with health conditions.

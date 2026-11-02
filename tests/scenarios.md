@@ -505,3 +505,36 @@ Must:
 
 Must not:
 - Training, nutrition or medical advice taken from web pages; invented event facts with no link.
+
+## S27: Athlete does not know the terms in a plan
+
+- Mode: athlete. Language: Polish.
+
+Prompt:
+```text
+Dostałem od kolegi plan na siłownię i nie rozumiem połowy. Jest tam np. "przysiad 3x8 @ RIR 2, deload co 6 tygodni" i "bieg Z2 45 min". Co to znaczy i jak mam to robić?
+```
+
+Must:
+- Explain RIR (reps left in reserve), deload and Z2 in plain Polish, with an example; RPE 8 = 2 RIR if RPE is mentioned [STR-29, STR-05, STR-36].
+- Say that "Z2" depends on the zone scheme: easy in 5-zone app schemes, steady in the 3-zone model; ask which one the plan uses or describe both by the talk test [END-02, END-03, END-14].
+- Mention that the person can ask about other terms (`glossary <term>`).
+
+Must not:
+- A new plan nobody asked for; figures not in the knowledge base.
+
+## S28: Glossary command
+
+- Mode: athlete. Language: English (the prompt has no other words to show a language).
+
+Prompt:
+```text
+glossary FTP HRV
+```
+
+Must:
+- Define FTP and HRV in plain words from `glossary.md`: FTP as 95% of 20-minute test power, a marker rather than an exact threshold; HRV compared with the person's own 7-day average [END-23, MON-14, MON-24].
+- Name related terms to look up next.
+
+Must not:
+- Coaching, screening questions or a plan.
