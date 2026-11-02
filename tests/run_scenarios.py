@@ -3,7 +3,8 @@
 
 Each scenario's prompt is sent as one message to `claude -p --agent evidence-coach`.
 Write, Edit, web tools and the Strava and Google Calendar connectors are
-blocked so that no test reads or stores real athlete data; Bash is allowed only
+blocked so that no test reads or stores real athlete data (a scenario marked
+"- Web: allowed" gets WebSearch and WebFetch, for event look-ups); Bash is allowed only
 for the activity summary script. Responses go to tests/results/round-N/<ID>.md
 with mechanical checks (cited claim IDs exist, no emojis); scoring is manual.
 
@@ -17,6 +18,7 @@ With --runs N above 1, each scenario runs N times and each reply is saved as
 """
 import argparse
 import json
+import os
 import re
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
@@ -36,7 +38,8 @@ def scenarios():
     for block in re.split(r"^## (?=S\d\d:)", text, flags=re.M)[1:]:
         sid, title = block.split("\n", 1)[0].split(": ", 1)
         prompt = re.search(r"Prompt:\n```text\n(.*?)\n```", block, re.S).group(1)
-        out[sid] = (title.strip(), prompt)
+        web = "- Web: allowed" in block
+        out[sid] = (title.strip(), prompt, web)
     return out
 
 
@@ -45,14 +48,24 @@ def known_claims():
             for l in f.read_text(encoding="utf-8").splitlines() if l.strip()}
 
 
-def run_one(sid, title, prompt, outdir, claims, via_skill=False, model="sonnet", run=None):
+def tool_flags(web):
+    """Web tools stay blocked unless the scenario says "- Web: allowed" (event look-ups)."""
+    web_tools = ["WebSearch", "WebFetch"]
+    blocked = [t for t in BLOCKED if not (web and t in web_tools)]
+    allowed = ALLOWED + (web_tools if web else [])
+    return ["--disallowedTools", *blocked, "--allowedTools", *allowed]
+
+
+def run_one(sid, title, prompt, web, outdir, claims, via_skill=False, model="sonnet", run=None):
     route = ["-p", f"/evidence-coach {prompt}"] if via_skill else ["-p", prompt, "--agent", "evidence-coach"]
     cmd = ["claude", *route, "--model", model, "--output-format", "json", "--no-session-persistence",
            # A personal skill of the same name outranks the project's, so without this an
            # installed copy of the skill would be tested instead of this repository's.
            "--setting-sources", "project,local",
-           "--disallowedTools", *BLOCKED, "--allowedTools", *ALLOWED]
-    proc = subprocess.run(cmd, cwd=PROJECT, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=900)
+           *tool_flags(web)]
+    # Auto memory holds the tester's own preferences and would otherwise reach the model.
+    env = {**os.environ, "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1"}
+    proc = subprocess.run(cmd, cwd=PROJECT, env=env, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=900)
     try:
         data = json.loads(proc.stdout)
     except json.JSONDecodeError:
@@ -87,8 +100,8 @@ def main():
     claims = known_claims()
     with ThreadPoolExecutor(a.jobs) as pool:
         runs = range(1, a.runs + 1) if a.runs > 1 else [None]
-        jobs = [pool.submit(run_one, sid, t, p, outdir, claims, a.via_skill, a.model, r)
-                for sid, (t, p) in todo.items() for r in runs]
+        jobs = [pool.submit(run_one, sid, t, p, w, outdir, claims, a.via_skill, a.model, r)
+                for sid, (t, p, w) in todo.items() for r in runs]
         for j in jobs:
             name, cost, unknown, emojis, failed = j.result()
             print(f"{name}: cost {cost}; unknown IDs {unknown or 'none'}; emojis {emojis or 'none'}"

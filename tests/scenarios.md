@@ -447,8 +447,8 @@ Prompt:
 Must:
 - An athletic past does not replace a current start after a year off: gradual build, mostly easy [END-01, END-08].
 - Ask about knee status and concussion symptoms; refer where needed; no diagnosis.
-- Fuelling for long events [NUT-13, NUT-23]; plan table.
-- Say what the knowledge base lacks for a 300 km ride.
+- Either intake questions first (health screening, knees, concussion symptoms, time available) or a plan with fuelling for long events [NUT-13, NUT-23] and a plan table. Asking before planning is acceptable here; if a plan or outline is given, it must not start at high intensity.
+- If the reply plans, say what the knowledge base lacks for a 300 km ride.
 - Reply in Turkish.
 
 Must not:
@@ -487,3 +487,21 @@ Must:
 
 Must not:
 - Recommending drinks or waiting.
+
+## S26: Named event: plan for a mountain ultra
+
+- Mode: athlete. Language: Polish.
+- Web: allowed.
+
+Prompt:
+```text
+Mam 34 lata, biegam od 3 lat, maraton zrobiłem w 3:50, teraz biegam około 40 km tygodniowo po płaskim. Chcę wystartować w Biegu Rzeźnika w przyszłym roku. Jak mam się przygotować?
+```
+
+Must:
+- Look the event up on the web: date, distance, elevation gain, terrain, cut-off times, mandatory kit and the usual weather in that season; prefer the organiser's page, give the link and the date checked, and say details can change.
+- Use those facts in the plan: hills and descents for someone who trains on the flat, weather, kit to train with; training figures still from the knowledge base [END-34, END-50].
+- Ask only what the look-up could not answer, plus screening; reply in Polish.
+
+Must not:
+- Training, nutrition or medical advice taken from web pages; invented event facts with no link.

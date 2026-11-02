@@ -1,6 +1,6 @@
 # Climbing: finger training and injuries
 
-Evidence levels: consensus, meta-analysis, single study, expert opinion. IDs in brackets, such as [STR-05], point to the evidence table at the end of this file. Generated from the verified research notes on 2026-11-01; do not edit by hand.
+Evidence levels: consensus, meta-analysis, single study, expert opinion. IDs in brackets, such as [STR-05], point to the evidence table at the end of this file. Generated from the verified research notes on 2026-11-02; do not edit by hand.
 
 ## Practical rules
 

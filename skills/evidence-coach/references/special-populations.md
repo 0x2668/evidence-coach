@@ -1,6 +1,6 @@
 # Physical activity dose for health and special populations
 
-Evidence levels: consensus, meta-analysis, single study, expert opinion. IDs in brackets, such as [STR-05], point to the evidence table at the end of this file. Generated from the verified research notes on 2026-11-01; do not edit by hand.
+Evidence levels: consensus, meta-analysis, single study, expert opinion. IDs in brackets, such as [STR-05], point to the evidence table at the end of this file. Generated from the verified research notes on 2026-11-02; do not edit by hand.
 
 ## Practical rules
 
@@ -51,7 +51,7 @@ Evidence levels: consensus, meta-analysis, single study, expert opinion. IDs in 
 - Recommend daily pelvic floor muscle training with technique instruction [POP-36].
 - Pregnant athletes, or women training well above the guideline, should be supervised by a specialist healthcare provider [POP-10].
 - Obtain the obstetric provider's agreement before programming. With an absolute contraindication only usual daily activities are allowed, no strenuous exercise; with a relative contraindication, discuss moderate-to-vigorous activity with the obstetric care provider before taking part [POP-37].
-- Avoid activities with contact or abdominal-impact risk, fall-prone activities (downhill skiing, surfing, off-road cycling, gymnastics, riding), hot yoga or Pilates, scuba diving, skydiving, and activity above 6,000 ft unless the woman lives at altitude [POP-55]. For cyclists, trail runners and climbers, ask the obstetric provider about fall risk before continuing those activities [POP-55].
+- Avoid activities with contact or abdominal-impact risk, fall-prone activities (downhill skiing, surfing, off-road cycling, gymnastics, riding), hot yoga or Pilates, scuba diving, skydiving, and activity above 6,000 ft unless the woman lives at altitude [POP-55]. For cyclists, trail runners and climbers, ask the obstetric provider about fall risk before continuing those activities [POP-55]. Until the provider has answered that specific question, take falls out of the plan: no bouldering falls or jumping off (only climbing she can step or climb down from), and no switch to roped climbing; experience in falling does not remove the risk (the last part is judgement) [POP-55].
 
 ### Postpartum
 - First year postpartum, without contraindications: at least 120 min/week of moderate-to-vigorous activity over four or more days, mixing aerobic and resistance training [POP-41].
