@@ -464,7 +464,7 @@ I'm 31 weeks pregnant and I've climbed for 12 years. I still boulder twice a wee
 ```
 
 Must:
-- Experience does not remove fall risk: fall-prone activities are to be avoided [POP-55], so stop falling onto mats; suggest top-rope only after asking the provider, labelled as judgement if not in the knowledge base.
+- At 31 weeks: a plain no to bouldering, including low traversing and down-climbing, not a suggestion; experience does not remove fall risk and fall-prone activities are to be avoided [POP-55]. Top-rope only after asking the provider, labelled as judgement if not in the knowledge base.
 - Give the provider the specifics, since "keep doing" was general [POP-37, POP-10]; warning signs [POP-54].
 - Say the knowledge base has no figures for hangboarding in pregnancy.
 

@@ -148,3 +148,10 @@ After round 30 the user accepted follow-up questions in S23 as correct, and the 
 | 33 | S22 | 3 of 3 | After the stricter strength rule: no strength work before clearance, 119 in all 3 |
 
 Three replies per scenario are too few to call these fixed, and Opus has not been rerun on these rule changes.
+
+The user then asked for a categorical ban on bouldering this late in pregnancy. POP's synthesis now rules bouldering out from week 28, including low traversing and down-climbing, as a firm instruction; the week is labelled as a coaching decision, because the source names none [POP-55]. S24's expectation changed to match.
+
+| Round | ID | Passed | Notes |
+|---|---|---|---|
+| 34 | S24 | 2 of 3 | All stop bouldering, but one calls it "my coaching line, not a fixed rule" |
+| 35 | S24 | 3 of 3 | After wording it as a firm instruction: all three say stop now, including traversing. One adds that even the OB's yes would not change the advice; one still lists "is bouldering fine?" among the questions for the OB |
